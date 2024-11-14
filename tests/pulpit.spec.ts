@@ -26,9 +26,11 @@ test.describe('Pulpit tests', () => {
     await page.locator('#execute_btn').click();
     await page.getByTestId('close-button').click();
     //await page.getByRole('link', { name: 'Przelew wykonany! ${expectedTransferReceiver} - 150,00PLN - pizza' }).click();
-    
+
     //Assert
-    await expect(page.locator('#show_messages')).toHaveText(`Przelew wykonany! Chuck Demobankowy - ${transferAmount},00PLN - ${transferTitle}`);
+    await expect(page.locator('#show_messages')).toHaveText(
+      `Przelew wykonany! Chuck Demobankowy - ${transferAmount},00PLN - ${transferTitle}`,
+    );
   });
 
   test('successful mobile top-up', async ({ page }) => {
@@ -43,7 +45,8 @@ test.describe('Pulpit tests', () => {
     await page.locator('#uniform-widget_1_topup_agreement span').click();
     await page.getByRole('button', { name: 'doładuj telefon' }).click();
     await page.getByTestId('close-button').click();
-    await expect(page.locator('#show_messages')).toHaveText('Doładowanie wykonane! 50,00PLN na numer 500 xxx xxx');
+    await expect(page.locator('#show_messages')).toHaveText(
+      'Doładowanie wykonane! 50,00PLN na numer 500 xxx xxx',
+    );
   });
-
 });
